@@ -8,6 +8,48 @@ var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
 
+var a = "Parikshit";
+var b = 24;
+var c = true;
+
+var d = null;
+//null = empty
+var e;
+//undefined
+console.log(e);
+
+//data structure - arrays - multiple data of different kinds or even similar kind - single dimensional arrays 
+var arr1 = ["Hi", 25, "Bye", true];
+console.log(arr1);
+console.log(arr1[2]);
+
+//arrays inside which you can store arrays - multi dimensional arrays 
+//[[]] - 2 dimensiona
+
+//[[[]]] -  3 dimensionals
+
+var arr2 = [["Hi", 45], [true, 85], ["Parikshit", 100]];
+console.log(arr2);
+
+//true 
+console.log(arr2[1][0]);
+
+//Parikshit 
+
+//45
+console.log(arr2[2][0]);
+console.log(arr2[0][1]);
+
+
+arr1.push("Heelo");
+console.log(arr1);
+
+//last in last out 
+arr1.pop();
+console.log(arr1);
+
+var gameState = "onSling";
+
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -69,16 +111,20 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState != "launched"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
+    
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launched";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        //slingshot.attach(bird.body);
     }
 }
